@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const routes = require('./src/routes/routes');
+const routes = require('./routes/routes');
 
 const app = express();
 app.use(express.json());

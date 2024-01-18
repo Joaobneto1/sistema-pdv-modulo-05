@@ -1,6 +1,8 @@
 const express = require('express');
 const usuarioController = require('../controllers/usuarioController');
 const { listarCategorias } = require('../controllers/categoriaController');
+const verificarLogin = require('../middlewares/loginVerify');
+const loginUsuario = require('../controllers/loginController');
 
 
 const router = express.Router();
@@ -15,10 +17,10 @@ router.post('/usuario',
   usuarioController.cadastrarUsuario);
 
 // Rota para login
-
+router.post('/login', loginUsuario)
 
 // Middleware para autenticação nas rotas subsequentes
-
+router.use(verificarLogin)
 
 // Rota para detalhar perfil do usuário
 
