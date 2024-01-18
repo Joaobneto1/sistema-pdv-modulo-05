@@ -1,5 +1,5 @@
 const express = require('express');
-const {cadastrarUsuario} = require('../controllers/usuarioController');
+const {cadastrarUsuario} = require('../controllers/cadastroUsuarioController');
 const { listarCategorias } = require('../controllers/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/loginController');
