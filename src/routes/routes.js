@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Rota para listar categorias
 router.get('/categoria', listarCategorias);
-// Rota para cadastrar usuário (Leonardo)
+// Rota para cadastrar usuário
 router.post('/usuario',  cadastrarUsuario);
 // Rota para login
 router.post('/login', loginUsuario)
