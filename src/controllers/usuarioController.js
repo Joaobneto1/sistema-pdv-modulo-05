@@ -38,7 +38,13 @@ const cadastrarUsuario = async (req, res) => {
 
 
 /*const cadastrarUsuario = async (req, res) => {
+  const cadastrarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
+
+ 
+  if (!nome || !email || !senha) {
+    return res.status(400).json({ erro: 'Todos os campos devem ser preenchidos' });
+  }
 
   try {
     const usuarioExistente = await conexao('usuarios').where('email', email).first();
@@ -59,7 +65,7 @@ const cadastrarUsuario = async (req, res) => {
     console.error(error);
     return res.status(500).json({ erro: 'Erro interno do servidor' });
   }
-};*/
+}*/
 
 
 
