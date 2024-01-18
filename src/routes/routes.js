@@ -1,5 +1,5 @@
 const express = require('express');
-const usuarioController = require('../controllers/usuarioController');
+const {cadastrarUsuario} = require('../controllers/usuarioController');
 const { listarCategorias } = require('../controllers/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/loginController');
@@ -13,9 +13,7 @@ const router = express.Router();
 // Rota para listar categorias
 router.get('/categoria', listarCategorias);
 // Rota para cadastrar usuário (Leonardo)
-router.post('/usuario',
-  usuarioController.cadastrarUsuario);
-
+router.post('/usuario',  cadastrarUsuario);
 // Rota para login
 router.post('/login', loginUsuario)
 
