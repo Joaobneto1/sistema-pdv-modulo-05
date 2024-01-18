@@ -30,15 +30,3 @@ CREATE TABLE usuarios (
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(100) NOT NULL
 );
-
-INSERT INTO categorias(nome)
-VALUES
-('Informática'),
-('Celulares'),
-('Beleza e Perfumaria'),
-('Mercado'),
-('Livros e Papelaria'),
-('Brinquedos'),
-('Moda'),
-('Bebê'),
-('Games');
