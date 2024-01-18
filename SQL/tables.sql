@@ -31,7 +31,7 @@ CREATE TABLE usuarios (
     senha VARCHAR(100) NOT NULL
 );
 
-INSERT INTO categorias(descricao)
+INSERT INTO categorias(nome)
 VALUES
 ('Informática'),
 ('Celulares'),
