@@ -1,5 +1,6 @@
 const express = require('express');
 const usuarioController = require('../controllers/usuarioController');
+const { listarCategorias } = require('../controllers/categoriaController');
 
 
 const router = express.Router();
@@ -8,9 +9,9 @@ const router = express.Router();
 //Galera depois removo os comentários é só pra organizar a ordem das rotas ok ;).
 
 // Rota para listar categorias
-
+router.get('/categoria', listarCategorias);
 // Rota para cadastrar usuário (Leonardo)
-router.post('/usuario', 
+router.post('/usuario',
   usuarioController.cadastrarUsuario);
 
 // Rota para login
