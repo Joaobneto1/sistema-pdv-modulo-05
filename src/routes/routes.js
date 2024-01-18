@@ -19,7 +19,7 @@ router.post('/login', loginUsuario)
 
 // Middleware para autenticação nas rotas subsequentes
 router.use(verificarLogin)
-
+ 
 // Rota para detalhar perfil do usuário
 
 // Rota para editar perfil do usuário

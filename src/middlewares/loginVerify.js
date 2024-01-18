@@ -10,7 +10,7 @@ const verificarLogin = async (req, res, next) => {
                 "Para acessar este recurso um token de autenticação válido deve ser enviado.",
         });
     }
- 
+  
     const token = authorization.split(" ")[1];
 
     try {

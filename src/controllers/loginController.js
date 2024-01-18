@@ -21,7 +21,7 @@ const loginUsuario = async (req, res) => {
                 mensagem: "Email ou senha inválida",
             });
         }
- 
+  
         const { senha: senhaUsuario, ...usuarioSemSenha } = usuario;
 
         const senhaValida = await bcrypt.compare(senha, senhaUsuario);
