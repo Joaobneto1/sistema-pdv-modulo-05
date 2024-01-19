@@ -3,13 +3,14 @@ const { cadastrarUsuario } = require('../controllers/cadastroUsuarioController')
 const { listarCategorias } = require('../controllers/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/loginController');
+const editarUsuario = require('../controllers/editarUsuario');
 const { detalharUsuario } = require('../controllers/detalharUsuarioController');
 
 
 const router = express.Router();
 
 
-//Galera depois removo os comentários é só pra organizar a ordem das rotas ok ;).
+
 
 // Rota para listar categorias
 router.get('/categoria', listarCategorias);
@@ -25,8 +26,7 @@ router.use(verificarLogin)
 router.get('/usuario', detalharUsuario);
 
 // Rota para editar perfil do usuário
-
-
+router.put('/usuario', editarUsuario)
 
 
 module.exports = router;
