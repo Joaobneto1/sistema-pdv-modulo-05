@@ -3,11 +3,8 @@ const { cadastrarUsuario } = require('../controllers/cadastroUsuarioController')
 const { listarCategorias } = require('../controllers/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/loginController');
-<<<<<<< HEAD
 const editarUsuario = require('../controllers/editarUsuario');
-=======
 const { detalharUsuario } = require('../controllers/detalharUsuarioController');
->>>>>>> 0228a0a44e54e33fa388144a028dd473c0e738fd
 
 
 const router = express.Router();
