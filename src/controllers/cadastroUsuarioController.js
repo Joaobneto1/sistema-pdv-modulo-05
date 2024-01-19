@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { schemaCadastroUsuario } = require('../validations/validacoes');
 
 
-// validação por Joi, abaixo do código comentado tem um end point sem Joi como validação, pra conferir, depois apagamos os comentários
+
 
 const cadastrarUsuario = async (req, res) => {
   const { error } = schemaCadastroUsuario.validate(req.body);
