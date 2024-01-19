@@ -1,21 +1,10 @@
 const knex = require('../database/conexao');
-const jwt = require('jsonwebtoken');
 
 const detalharUsuario = async (req, res) => {
     try {
-        const token = extrairTokenAutorizacao(req);
+        const userId = req.usuario.id;
 
-        if (!token) {
-            return res.status(401).json({ mensagem: 'Token inválido' });
-        }
-
-        const userId = extrairUserIdDoToken(token);
-
-        if (!userId) {
-            return res.status(401).json({ mensagem: 'Token inválido' });
-        }
-
-        const usuario = await obterUsuarioPorId(userId);
+        const usuario = await knex('usuarios').select('id', 'nome', 'email').where('id', userId).first();
 
         if (!usuario) {
             return res.status(404).json({ mensagem: 'Usuário não encontrado' });
@@ -27,27 +16,6 @@ const detalharUsuario = async (req, res) => {
         res.status(500).json({ mensagem: 'Erro interno do servidor.' });
     }
 };
-
-const extrairTokenAutorizacao = (req) => {
-    const authorizationHeader = req.headers['authorization'];
-
-    return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
-};
-
-const extrairUserIdDoToken = (token) => {
-    try {
-        const decodedToken = jwt.decode(token);
-        return decodedToken ? decodedToken.id : null;
-    } catch (error) {
-        console.error('Erro ao decodificar o token:', error);
-        return null;
-    }
-};
-
-const obterUsuarioPorId = async (userId) => {
-    return await knex('usuarios').select('id', 'nome', 'email').where('id', userId).first();
-};
-
 
 module.exports = {
     detalharUsuario
