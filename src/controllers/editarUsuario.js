@@ -2,7 +2,6 @@ const knex = require('../database/conexao');
 const bcrypt = require('bcrypt');
 const { schemaCadastroUsuario } = require('../validations/validacoes');
 
-
 const editarUsuario = async (req, res) => {
     const { error } = schemaCadastroUsuario.validate(req.body);
 
@@ -14,29 +13,30 @@ const editarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body;
 
     try {
-        const emailExiste = await knex('usuarios').where({ email }).first()
+        const emailExiste = await knex('usuarios').where({ email }).whereNot('id', req.usuario.id).first();
 
-        if (emailExiste && email == !req.usuario.email) {
-            return res.status(400).json({ mensagem: 'O email já existe' })
+        if (emailExiste) {
+            return res.status(400).json({ mensagem: 'O email já existe' });
         }
-        const senhaCriptografada = await bcrypt.hash(senha, 10)
+
+        const senhaCriptografada = await bcrypt.hash(senha, 10);
 
         const usuarioEditado = await knex('usuarios').where({ id: req.usuario.id }).update({
             nome,
             email,
             senha: senhaCriptografada
-        })
+        });
 
         if (!usuarioEditado) {
-            return res.status(400).json('Usuário não foi atualizado.')
+            return res.status(400).json({ mensagem: 'Usuário não foi atualizado.' });
         }
 
-        return res.status(200).json('Usuário atualizado com sucesso.')
-
+        return res.status(200).json({ mensagem: 'Usuário atualizado com sucesso.' });
 
     } catch (error) {
-        return res.status(500).json({ mensagem: 'Erro interno do servidor.' })
+        console.error('Erro:', error);
+        return res.status(500).json({ mensagem: 'Erro interno do servidor.' });
     }
-}
+};
 
-module.exports = editarUsuario
+module.exports = editarUsuario;
