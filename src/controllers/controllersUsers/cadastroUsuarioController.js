@@ -5,14 +5,14 @@ const {
 } = require("../../validations/validacoesCadastroUsuario");
 
 const cadastrarUsuario = async (req, res) => {
-  const { error } = schemaCadastroUsuario.validate(req.body);
+  const { error, value } = schemaCadastroUsuario.validate(req.body);
 
   if (error) {
     const errorMessage = error.details[0].message;
     return res.status(400).json({ erro: errorMessage });
   }
 
-  const { nome, email, senha } = req.body;
+  const { nome, email, senha } = value;
 
   try {
     const usuarioExistente = await conexao("usuarios")
