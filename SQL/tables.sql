@@ -44,10 +44,10 @@ CREATE TABLE clientes (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) unique not null,
     cpf VARCHAR(100) unique not null,
-    cep VARCHAR(10) not null,
-    rua VARCHAR(100) not null,
-    numero INTEGER not null,
-    bairro VARCHAR(100) not null,
-    cidade VARCHAR(100) not null,
-    estado VARCHAR(100) not null
+    cep VARCHAR(10),
+    rua VARCHAR(100),
+    numero INTEGER,
+    bairro VARCHAR(100),
+    cidade VARCHAR(100),
+    estado VARCHAR(100)
 );
