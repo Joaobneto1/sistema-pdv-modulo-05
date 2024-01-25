@@ -7,7 +7,8 @@ const editarUsuario = require('../controllers/controllersUsers/editarUsuario');
 const { detalharUsuario } = require('../controllers/controllersUsers/detalharUsuarioController');
 const { cadastrarProduto } = require('../controllers/controllersProduct/cadastrarProdutoController');
 const detalharProduto = require('../controllers/controllersProduct/detalharProdutoController');
-const {cadastrarCliente} = require('../controllers/controllersClients/cadastrarClienteController');
+const { cadastrarCliente } = require('../controllers/controllersClients/cadastrarClienteController');
+const { deletarProduto } = require('../controllers/controllersProduct/excluirProdutoController');
 
 
 const router = express.Router();
@@ -31,11 +32,12 @@ router.get('/usuario', detalharUsuario);
 router.put('/usuario', editarUsuario)
 
 
-router.post('/produto', cadastrarProduto )
+router.post('/produto', cadastrarProduto)
 
 router.get('/produto/:id', detalharProduto)
 
 router.post('/cliente', cadastrarCliente)
 
+router.delete('/produto/:id', deletarProduto);
 
 module.exports = router;
