@@ -10,7 +10,7 @@ const schemaLoginUsuario = Joi.object({
   
     senha: Joi.string().required().messages({
       'any.required': 'O campo senha é obrigatório',
-          'string.empty': 'O campo senha é obrigatório',
+      'string.empty': 'O campo senha é obrigatório',
     }),
   }) 
   

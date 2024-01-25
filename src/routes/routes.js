@@ -6,6 +6,8 @@ const loginUsuario = require('../controllers/controllersUsers/loginController');
 const editarUsuario = require('../controllers/controllersUsers/editarUsuario');
 const { detalharUsuario } = require('../controllers/controllersUsers/detalharUsuarioController');
 const { cadastrarProduto } = require('../controllers/controllersProduct/cadastrarProdutoController');
+const detalharProduto = require('../controllers/controllersProduct/detalharProdutoController');
+const {cadastrarCliente} = require('../controllers/controllersClients/cadastrarClienteController');
 
 
 const router = express.Router();
@@ -30,6 +32,10 @@ router.put('/usuario', editarUsuario)
 
 
 router.post('/produto', cadastrarProduto )
+
+router.get('/produto/:id', detalharProduto)
+
+router.post('/cliente', cadastrarCliente)
 
 
 module.exports = router;
