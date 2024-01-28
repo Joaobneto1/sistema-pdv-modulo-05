@@ -1,18 +1,17 @@
 const knex = require('../../database/conexao');
-const { schemaCadastroCliente } = require('../../validations/validacoesCadastroCliente')
-
+const { schemaCadastroCliente } = require('../../validations/validacoesCadastroCliente');
 
 const editarDadosCliente = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const { error, value } = schemaCadastroCliente.validate(req.body)
+        const { error, value } = schemaCadastroCliente.validate(req.body);
 
         if (error) {
-            return res.status(400).json({ mensagem: error.message })
+            return res.status(400).json({ mensagem: error.message });
         }
 
-        const { nome, email, cpf, cep, rua, numero, bairro, cidade, estado } = value
+        const { nome, email, cpf, cep, rua, numero, bairro, cidade, estado } = value;
 
         const cliente = await knex('clientes').where('id', id).first();
 
@@ -25,9 +24,8 @@ const editarDadosCliente = async (req, res) => {
 
             if (emailExiste) {
                 return res.status(400).json({ mensagem: "O email já existe" });
-            }
-            else {
-                const clienteEditado = await knex("usuarios")
+            } else {
+                await knex("clientes")
                     .where('id', id)
                     .update({
                         email,
@@ -40,9 +38,8 @@ const editarDadosCliente = async (req, res) => {
 
             if (cpfExistente) {
                 return res.status(400).json({ mensagem: "O CPF já existe" });
-            }
-            else {
-                const clienteEditado = await knex("cliente")
+            } else {
+                await knex("clientes")
                     .where('id', id)
                     .update({
                         cpf,
@@ -51,7 +48,7 @@ const editarDadosCliente = async (req, res) => {
         }
 
         if (nome) {
-            const clienteEditado = await knex("cliente")
+            await knex("clientes")
                 .where('id', id)
                 .update({
                     nome,
@@ -59,7 +56,7 @@ const editarDadosCliente = async (req, res) => {
         }
 
         if (cep || rua || numero || bairro || cidade || estado) {
-            const clienteEditado = await knex("cliente")
+            await knex("clientes")
                 .where('id', id)
                 .update({
                     cep,
@@ -71,8 +68,9 @@ const editarDadosCliente = async (req, res) => {
                 });
         }
 
+        const clienteAtualizado = await knex('clientes').where('id', id).first();
 
-        res.status(200).json(clienteEditado);
+        res.status(200).json(clienteAtualizado);
     } catch (error) {
         console.error(error);
         res.status(500).json({ mensagem: 'Erro interno do servidor. Consulte os logs para mais informações.' });
