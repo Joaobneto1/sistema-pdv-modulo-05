@@ -12,6 +12,7 @@ const { deletarProduto } = require('../controllers/controllersProduct/excluirPro
 const { detalharCliente } = require('../controllers/controllersClients/detalharClienteController');
 const { listarClientes } = require('../controllers/controllersClients/listarClientesController');
 const editarProduto = require('../controllers/controllersProduct/editarProduto');
+const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
 
 
 const router = express.Router();
@@ -46,6 +47,8 @@ router.post('/cliente', cadastrarCliente)
 router.get('/cliente', listarClientes)
 
 router.get('/cliente/:id', detalharCliente)
+
+router.put('/cliente/:id', editarDadosCliente);
 
 router.delete('/produto/:id', deletarProduto);
 
