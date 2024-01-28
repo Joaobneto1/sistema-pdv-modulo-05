@@ -16,34 +16,17 @@ const { listarClientes } = require('../controllers/controllersClients/listarClie
 const router = express.Router();
 
 
-
-
-
 router.get('/categoria', listarCategorias);
-
 router.post('/usuario', cadastrarUsuario);
-
 router.post('/login', loginUsuario)
-
-
 router.use(verificarLogin)
-
 router.get('/usuario', detalharUsuario);
-
-
 router.put('/usuario', editarUsuario)
-
-
 router.post('/produto', cadastrarProduto)
-
 router.get('/produto/:id', detalharProduto)
-
 router.post('/cliente', cadastrarCliente)
-
 router.get('/cliente', listarClientes)
-
 router.get('/cliente/:id', detalharCliente)
-
 router.delete('/produto/:id', deletarProduto);
 
 module.exports = router;
