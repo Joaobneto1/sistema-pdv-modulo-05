@@ -31,7 +31,7 @@ const editarProduto = async (req, res) => {
             });
 
         if (!produtoEditado) {
-            return res.status(404).json({ mensagem: 'Produto não Editado' });
+            return res.status(404).json({ mensagem: 'Produto não existe' });
         }
 
         return res.status(200).json(produtoEditado);
