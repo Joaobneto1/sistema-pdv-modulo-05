@@ -70,7 +70,7 @@ const editarDadosCliente = async (req, res) => {
 
         const clienteAtualizado = await knex('clientes').where('id', id).first();
 
-        res.status(200).json(clienteAtualizado);
+        res.status(200).json({mensagem: "Cliente Atualizado com sucesso", cliente: clienteAtualizado });
     } catch (error) {
         console.error(error);
         res.status(500).json({ mensagem: 'Erro interno do servidor. Consulte os logs para mais informações.' });
