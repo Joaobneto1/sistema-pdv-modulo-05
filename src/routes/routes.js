@@ -13,6 +13,7 @@ const { detalharCliente } = require('../controllers/controllersClients/detalharC
 const { listarClientes } = require('../controllers/controllersClients/listarClientesController');
 const editarProduto = require('../controllers/controllersProduct/editarProduto');
 const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
+const { cadastrarPedido } = require('../controllers/controllersOrders/cadastrarPedido');
 
 
 const router = express.Router();
@@ -25,21 +26,21 @@ router.use(verificarLogin)
 router.get('/usuario', detalharUsuario);
 router.put('/usuario', editarUsuario)
 router.post('/produto', cadastrarProduto)
-<<<<<<< HEAD
-=======
+
+
 
 router.put('produto/:id', editarProduto)
 
->>>>>>> refs/remotes/origin/1.01
+
 router.get('/produto/:id', detalharProduto)
 router.post('/cliente', cadastrarCliente)
 router.get('/cliente', listarClientes)
 router.get('/cliente/:id', detalharCliente)
-<<<<<<< HEAD
-=======
 
 router.put('/cliente/:id', editarDadosCliente);
->>>>>>> refs/remotes/origin/1.01
+
 router.delete('/produto/:id', deletarProduto);
+
+router.post('/pedido', cadastrarPedido)
 
 module.exports = router;
