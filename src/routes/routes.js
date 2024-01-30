@@ -25,12 +25,10 @@ router.use(verificarLogin)
 router.get('/usuario', detalharUsuario);
 router.put('/usuario', editarUsuario)
 router.post('/produto', cadastrarProduto)
-<<<<<<< HEAD
-=======
+
 
 router.put('produto/:id', editarProduto)
 
->>>>>>> refs/remotes/origin/1.01
 router.get('/produto/:id', detalharProduto)
 router.post('/cliente', cadastrarCliente)
 router.get('/cliente', listarClientes)
