@@ -13,6 +13,7 @@ const { detalharCliente } = require('../controllers/controllersClients/detalharC
 const { listarClientes } = require('../controllers/controllersClients/listarClientesController');
 const editarProduto = require('../controllers/controllersProduct/editarProduto');
 const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
+const { cadastrarPedido } = require('../controllers/controllersOrders/cadastrarPedido');
 
 
 const router = express.Router();
