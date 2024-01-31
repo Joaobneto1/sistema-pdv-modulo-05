@@ -24,6 +24,10 @@ const listarPedidos = async(req, res) => {
     };
     const pedidoEncontrado = await query;
 
+    if (pedidoEncontrado.length < 1) {
+      return res.json({mensagem: 'Não há registro de pedidos disponíveis'})
+    }
+
     const pedidoFormatado = pedidoEncontrado.reduce((acumulador, pedido) => {
       const pedidoExistente = acumulador.find(item => item.pedido.id === pedido.pedido_id);
 
@@ -57,7 +61,7 @@ const listarPedidos = async(req, res) => {
 
       return acumulador;
     }, []);
-    
+
     res.status(200).json(pedidoFormatado)
   } catch (error) {
     console.log(error.message);
