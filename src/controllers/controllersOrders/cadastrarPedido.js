@@ -111,12 +111,12 @@ const cadastrarPedido = async (req, res) => {
     const caminhoAbsoluto = require('path').join(__dirname, '../../templates/modeloEmail.html');
    
     
-    const emailContent = await compiladorHtml(caminhoAbsoluto, contextoEmail);
+    const conteudoEmail = await compiladorHtml(caminhoAbsoluto, contextoEmail);
          transportador.sendMail({
       from: 'gbank970@gmail.com',
       to: cliente.email,
       subject: 'Confirmação da G9Bank - Pedido Efetuado com Sucesso',
-      html: emailContent,
+      html: conteudoEmail,
     });
 
     return res.status(201).json({ mensagem: 'Pedido cadastrado com sucesso.' });
