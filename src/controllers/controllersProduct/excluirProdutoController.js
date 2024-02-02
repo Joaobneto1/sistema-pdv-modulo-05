@@ -1,3 +1,5 @@
+const knex = require('../../database/conexao')
+
 const deletarProduto = async (req, res) => {
     try {
         const IdProduto = req.params.id;
@@ -5,6 +7,14 @@ const deletarProduto = async (req, res) => {
         const existeProduto = await knex('produtos').where({ id: IdProduto }).first();
         if (!existeProduto) {
             return res.status(404).json({ mensagem: 'Produto não encontrado.' });
+        }
+
+        const pedidoComProduto = await knex('pedido_produtos')
+            .where({ produto_id: IdProduto })
+            .first();
+
+        if (pedidoComProduto) {
+            return res.status(400).json({ mensagem: 'O produto está vinculado a um pedido e não pode ser excluído.' });
         }
 
         await knex('produtos').where({ id: IdProduto }).delete();
