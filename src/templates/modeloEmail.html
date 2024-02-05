@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Pedido</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            font-size: 20px; 
+        }
+
+        .highlight {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .highlight:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="cliente">Olá, {{nomecliente}}!</h1>
+        </div>
+        <div>
+            <p>Parabéns! Seu pedido foi efetuado com sucesso.</p><br>
+
+        </div>
+        <div>
+            <h2>Produtos:</h2>
+            <ul>
+                {{#produtos}}
+                    <li>
+                        <strong>{{produto.descricao}}</strong> - Quantidade: {{quantidade_produto}}, Valor Unitário: R$ {{valor_unitario}}, Subtotal: R$ {{subtotal}}
+                    </li>
+                {{/produtos}}
+                <p><strong>Esperamos muito que goste do seu produto . Obrigado por comprar com a gente!  😃 </strong></p>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

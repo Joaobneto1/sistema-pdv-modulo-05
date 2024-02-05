@@ -5,13 +5,6 @@ CREATE TABLE categorias (
     descricao VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE pedidos (
-    id SERIAL PRIMARY KEY,
-    cliente_id INTEGER REFERENCES clientes(id),
-    data_pedido DATE NOT NULL,
-    total_centavos INTEGER NOT NULL
-);
-
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -51,3 +44,20 @@ CREATE TABLE clientes (
     cidade VARCHAR(100),
     estado VARCHAR(100)
 );
+
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    cliente_id INTEGER REFERENCES clientes(id),
+    observacao text,
+    valor_total INTEGER NOT NULL
+);
+
+CREATE TABLE pedido_produtos(
+  id serial primary key,
+  pedido_id integer references pedidos(id),
+  produto_id integer references produtos(id),
+  quantidade_produto integer not null,
+  valor_produto integer not null
+);
+
+ALTER TABLE produtos ADD COLUMN produto_imagem varchar(255);
