@@ -1,8 +1,6 @@
 const express = require('express');
 const { cadastrarUsuario } = require('../controllers/controllersUsers/cadastroUsuarioController');
 const { listarCategorias } = require('../controllers/controllersCategory/categoriaController');
-const { cadastrarUsuario } = require('../controllers/controllersUsers/cadastroUsuarioController');
-const { listarCategorias } = require('../controllers/controllersCategory/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/controllersUsers/loginController');
 const editarUsuario = require('../controllers/controllersUsers/editarUsuario');
