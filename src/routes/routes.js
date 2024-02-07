@@ -1,6 +1,8 @@
 const express = require('express');
 const { cadastrarUsuario } = require('../controllers/controllersUsers/cadastroUsuarioController');
 const { listarCategorias } = require('../controllers/controllersCategory/categoriaController');
+const { cadastrarUsuario } = require('../controllers/controllersUsers/cadastroUsuarioController');
+const { listarCategorias } = require('../controllers/controllersCategory/categoriaController');
 const verificarLogin = require('../middlewares/loginVerify');
 const loginUsuario = require('../controllers/controllersUsers/loginController');
 const editarUsuario = require('../controllers/controllersUsers/editarUsuario');
@@ -15,7 +17,6 @@ const editarProduto = require('../controllers/controllersProduct/editarProduto')
 const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
 const { cadastrarPedido } = require('../controllers/controllersOrders/cadastrarPedido');
 const { listarPedidos } = require('../controllers/controllersOrders/listarPedidos');
-
 
 const router = express.Router();
 
