@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "![](https://i.imgur.com/xG74tOh.png)",
   "main": "index.js",
+
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "index.js"
-  },
+     "start": "node index.js"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
