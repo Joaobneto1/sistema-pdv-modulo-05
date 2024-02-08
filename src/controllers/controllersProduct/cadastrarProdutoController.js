@@ -1,9 +1,6 @@
 const conexao = require("../../database/conexao");
-const { schemaCadastroProduto } = require("../../validations/validacoesCadastroProduto");
-
-
-const knex = require("../../database/conexao");
 const { uploadImagem } = require("../../services/upload");
+const { schemaCadastroProduto } = require("../../validations/validacoesCadastroProduto");
 
 
 const cadastrarProduto = async (req, res) => {
