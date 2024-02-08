@@ -11,19 +11,23 @@ const s3 = new aws.S3({
 })
 
 const uploadImagem = async (path, buffer, mimetype) => {
-    const imagem = s3.upload({
-        Bucket: process.env.BUCKET_NAME,
-        Key: path,
-        Body: buffer,
-        ContentType: mimetype
-    }).promise()
+    try {
+        const imagem = await s3.upload({
+            Bucket: process.env.BUCKET_NAME,
+            Key: path,
+            Body: buffer,
+            ContentType: mimetype
+        }).promise();
 
-    return {
-        path: imagem.Key,
-        url: `https://${process.env.BUCKET_NAME}.${process.env.ENDPOINT_BACKBLAZE}/${imagem.Key}`
+        return {
+            path: imagem.Key,
+            url: `https://${process.env.BUCKET_NAME}.${process.env.ENDPOINT_BACKBLAZE}/${imagem.Key}`
+        };
+    } catch (error) {
+        console.error("Erro ao fazer upload da imagem:", error);
+        throw error;
     }
-}
-
+};
 const excluirImagem = async (path) => {
     await s3.deleteObject({
         Bucket: process.env.BUCKET_NAME,
