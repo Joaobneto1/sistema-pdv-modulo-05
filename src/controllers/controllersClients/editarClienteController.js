@@ -4,7 +4,6 @@ const { schemaCadastroCliente } = require('../../validations/validacoesCadastroC
 const editarDadosCliente = async (req, res) => {
     try {
         const { id } = req.params;
-
         const { error, value } = schemaCadastroCliente.validate(req.body);
 
         if (error) {
@@ -14,14 +13,12 @@ const editarDadosCliente = async (req, res) => {
         const { nome, email, cpf, cep, rua, numero, bairro, cidade, estado } = value;
 
         const cliente = await knex('clientes').where('id', id).first();
-
         if (!cliente) {
             return res.status(404).json({ mensagem: 'Cliente não encontrado' });
         }
 
         if (email && email !== cliente.email) {
             const emailExiste = await knex("clientes").where('email', email).first();
-
             if (emailExiste) {
                 return res.status(400).json({ mensagem: "O email já existe" });
             }
@@ -29,13 +26,11 @@ const editarDadosCliente = async (req, res) => {
 
         if (cpf && cpf !== cliente.cpf) {
             const cpfExistente = await knex("clientes").where('cpf', cpf).first();
-
             if (cpfExistente) {
                 return res.status(400).json({ mensagem: "O CPF já existe" });
             }
         }
 
-        // Atualizar os dados do cliente
         await knex("clientes")
             .where('id', id)
             .update({
@@ -51,7 +46,6 @@ const editarDadosCliente = async (req, res) => {
             });
 
         const clienteAtualizado = await knex('clientes').where('id', id).first();
-
         res.status(200).json({ mensagem: "Cliente atualizado com sucesso", cliente: clienteAtualizado });
     } catch (error) {
         console.error(error);
