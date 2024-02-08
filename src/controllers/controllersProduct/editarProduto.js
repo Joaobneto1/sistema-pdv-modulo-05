@@ -14,6 +14,10 @@ const editarProduto = async (req, res) => {
             const upload = await uploadImagem(`produtos/${IdProduto}/${originalname}`, buffer, mimetype);
 
             produtoEditado.produto_imagem = upload.path;
+
+            await knex('produtos')
+                .where({ id: IdProduto })
+                .update({ produto_imagem: produtoEditado.produto_imagem });
         }
 
         if (Object.keys(req.body).length > 0) {
