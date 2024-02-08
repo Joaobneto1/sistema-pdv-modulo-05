@@ -19,7 +19,7 @@ const editarDadosCliente = async (req, res) => {
             return res.status(404).json({ mensagem: 'Cliente não encontrado' });
         }
 
-        if (email) {
+        if (email && email !== cliente.email) {
             const emailExiste = await knex("clientes").where({ email }).first();
 
             if (emailExiste) {
@@ -33,7 +33,7 @@ const editarDadosCliente = async (req, res) => {
             }
         }
 
-        if (cpf) {
+        if (cpf && cpf !== cliente.cpf) {
             const cpfExistente = await knex("clientes").where({ cpf }).first();
 
             if (cpfExistente) {
@@ -70,7 +70,7 @@ const editarDadosCliente = async (req, res) => {
 
         const clienteAtualizado = await knex('clientes').where('id', id).first();
 
-        res.status(200).json({mensagem: "Cliente Atualizado com sucesso", cliente: clienteAtualizado });
+        res.status(200).json({ mensagem: "Cliente Atualizado com sucesso", cliente: clienteAtualizado });
     } catch (error) {
         console.error(error);
         res.status(500).json({ mensagem: 'Erro interno do servidor. Consulte os logs para mais informações.' });
