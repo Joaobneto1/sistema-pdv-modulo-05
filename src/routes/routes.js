@@ -15,7 +15,7 @@ const editarProduto = require('../controllers/controllersProduct/editarProduto')
 const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
 const { cadastrarPedido } = require('../controllers/controllersOrders/cadastrarPedido');
 const { listarPedidos } = require('../controllers/controllersOrders/listarPedidos');
-const { multer } = require('../middlewares/multer')
+const  multer  = require('../middlewares/multer')
 
 const router = express.Router();
 
