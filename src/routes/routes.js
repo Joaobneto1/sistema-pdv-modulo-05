@@ -28,7 +28,7 @@ router.put('/usuario', editarUsuario)
 router.post('/produto', cadastrarProduto)
 
 
-router.put('produto/:id', editarProduto)
+router.put('/produto/:id', editarProduto)
 
 router.get('/produto/:id', detalharProduto)
 router.post('/cliente', cadastrarCliente)
