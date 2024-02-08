@@ -19,20 +19,16 @@ const editarDadosCliente = async (req, res) => {
             return res.status(404).json({ mensagem: 'Cliente não encontrado' });
         }
 
-        // Verificar se o email fornecido na requisição é diferente do email atual do cliente
         if (email && email !== cliente.email) {
-            // Verificar se o email já existe para outro cliente
-            const emailExiste = await knex("clientes").where('email', email).whereNot('id', id).first();
+            const emailExiste = await knex("clientes").where('email', email).first();
 
             if (emailExiste) {
                 return res.status(400).json({ mensagem: "O email já existe" });
             }
         }
 
-        // Verificar se o cpf fornecido na requisição é diferente do cpf atual do cliente
         if (cpf && cpf !== cliente.cpf) {
-            // Verificar se o cpf já existe para outro cliente
-            const cpfExistente = await knex("clientes").where('cpf', cpf).whereNot('id', id).first();
+            const cpfExistente = await knex("clientes").where('cpf', cpf).first();
 
             if (cpfExistente) {
                 return res.status(400).json({ mensagem: "O CPF já existe" });
