@@ -15,7 +15,6 @@ const editarProduto = require('../controllers/controllersProduct/editarProduto')
 const { editarDadosCliente } = require('../controllers/controllersClients/editarClienteController');
 const { cadastrarPedido } = require('../controllers/controllersOrders/cadastrarPedido');
 const { listarPedidos } = require('../controllers/controllersOrders/listarPedidos');
-const { listarProdutos } = require('../controllers/controllersOrders/listarPedidos');
 const multer = require('../middlewares/multer');
 
 const router = express.Router();
@@ -34,7 +33,7 @@ router.put('/produto/:id', editarProduto)
 router.get('/produto/:id', detalharProduto)
 router.post('/cliente', cadastrarCliente)
 router.get('/cliente', listarClientes)
-router.get('/produto', listarPedidos)
+
 
 router.get('/cliente/:id', detalharCliente)
 
