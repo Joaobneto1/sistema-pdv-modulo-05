@@ -1,12 +1,7 @@
 const Joi = require('joi')
 
 const schemaEditarProduto = Joi.object({
-    id: Joi.number().integer().positive().required().messages({
-        'number.integer': 'O parâmetro id deve ser um número inteiro',
-        'number.positive': 'O parâmetro id deve ser um número positivo',
-        'any.required': 'O parâmetro id é obrigatório',
-    }),
-    descricao: Joi.string().required().messages({
+      descricao: Joi.string().required().messages({
         'string.empty': 'O campo descricao não pode estar vazio',
         'any.required': 'O campo descricao é obrigatório',
     }),
