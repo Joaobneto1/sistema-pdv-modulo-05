@@ -28,15 +28,21 @@ const uploadImagem = async (path, buffer, mimetype) => {
         throw error;
     }
 };
+
 const excluirImagem = async (path) => {
-    await s3.deleteObject({
-        Bucket: process.env.BUCKET_NAME,
-        Key: path
-    }).promise()
-}
+    try {
+        await s3.deleteObject({
+            Bucket: process.env.BUCKET_NAME,
+            Key: path 
+        }).promise();
+        console.log(`Imagem ${path} excluída com sucesso.`);
+    } catch (error) {
+        console.error("Erro ao excluir a imagem:", error);
+        throw error;
+    }
+};
 
 module.exports = {
     uploadImagem,
     excluirImagem
 }
-
