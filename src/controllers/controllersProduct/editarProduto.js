@@ -13,14 +13,10 @@ const editarProduto = async (req, res) => {
             await excluirImagem(produtoEditado.produto_imagem);
             const upload = await uploadImagem(`produtos/${IdProduto}/${originalname}`, buffer, mimetype);
 
-            produtoEditado = await knex('produtos')
-                .where({ id: IdProduto })
-                .update({
-                    produto_imagem: upload.path
-                }, ['produto_imagem']);
+            produtoEditado.produto_imagem = upload.path;
         }
 
-        if (req.body) {
+        if (Object.keys(req.body).length > 0) {
             const { error, value } = schemaEditarProduto.validate(req.body);
             if (error) {
                 return res.status(400).json({ mensagem: error.message });
@@ -43,7 +39,7 @@ const editarProduto = async (req, res) => {
                     quantidade_estoque,
                     valor,
                     categoria_id,
-                });
+                }, ['descricao', 'quantidade_estoque', 'valor', 'categoria_id']);
         }
 
         if (!produtoEditado) {
