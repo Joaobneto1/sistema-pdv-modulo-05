@@ -20,7 +20,7 @@ const editarDadosCliente = async (req, res) => {
         }
 
         if (email && email !== cliente.email) {
-            const emailExiste = await knex("clientes").where({ email }).first();
+            const emailExiste = await knex("clientes").where('email', email).whereNot('id', id).first();
 
             if (emailExiste) {
                 return res.status(400).json({ mensagem: "O email já existe" });
@@ -34,7 +34,7 @@ const editarDadosCliente = async (req, res) => {
         }
 
         if (cpf && cpf !== cliente.cpf) {
-            const cpfExistente = await knex("clientes").where({ cpf }).first();
+            const cpfExistente = await knex("clientes").where('cpf', cpf).whereNot('id', id).first();
 
             if (cpfExistente) {
                 return res.status(400).json({ mensagem: "O CPF já existe" });
