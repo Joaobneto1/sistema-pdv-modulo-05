@@ -51,7 +51,7 @@ const cadastrarProduto = async (req, res) => {
           produto_imagem: imageUrl
       })
       .where({ id });
-
+ 
   return res.status(201).json({
       mensagem: 'Produto cadastrado com sucesso.',
       produto: {
