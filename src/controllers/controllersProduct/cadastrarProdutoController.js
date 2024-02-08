@@ -41,10 +41,9 @@ const cadastrarProduto = async (req, res) => {
       `produtos/${id}/${originalname}`,
       buffer,
       mimetype
-  );
-
-  const imageUrl = `https://${process.env.BUCKET_NAME}.${process.env.ENDPOINT_BACKBLAZE}/${imagem.Key}`;
-
+    );
+    
+    const imageUrl = `https://${process.env.BUCKET_NAME}.${process.env.ENDPOINT_BACKBLAZE}/${imagem.path}`;
   
   await conexao('produtos')
       .update({
