@@ -8,13 +8,11 @@
     "start": "node ./src/index.js"
 },
 
-    "start": "node ./src/index.js"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1551.0",
+    "aws-sdk": "^2.1553.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
