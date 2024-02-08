@@ -19,31 +19,19 @@ const editarDadosCliente = async (req, res) => {
             return res.status(404).json({ mensagem: 'Cliente não encontrado' });
         }
 
-        if (email && email !== cliente.email) {
+        if (email !== cliente.email) {
             const emailExiste = await knex("clientes").where('email', email).first();
 
             if (emailExiste) {
                 return res.status(400).json({ mensagem: "O email já existe" });
-            } else {
-                await knex("clientes")
-                    .where('id', id)
-                    .update({
-                        email,
-                    });
             }
         }
 
-        if (cpf && cpf !== cliente.cpf) {
+        if (cpf !== cliente.cpf) {
             const cpfExistente = await knex("clientes").where('cpf', cpf).first();
 
             if (cpfExistente) {
                 return res.status(400).json({ mensagem: "O CPF já existe" });
-            } else {
-                await knex("clientes")
-                    .where('id', id)
-                    .update({
-                        cpf,
-                    });
             }
         }
 
@@ -52,6 +40,8 @@ const editarDadosCliente = async (req, res) => {
             .where('id', id)
             .update({
                 nome,
+                email,
+                cpf,
                 cep,
                 rua,
                 numero,
