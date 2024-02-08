@@ -1,6 +1,10 @@
 # desafio-backend-05-pdv
 ![](https://i.imgur.com/xG74tOh.png)
 
+
+LINK DO DEPLOY DO PROJETO: https://zany-red-chinchilla-tutu.cyclic.app/
+
+
 # Desafio Módulo 5 - Backend
 
 Seja bem vindo(a) ao desafio do módulo 5.
