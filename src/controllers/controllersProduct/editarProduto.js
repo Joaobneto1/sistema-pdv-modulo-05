@@ -1,4 +1,3 @@
-editarProduto.js
 const knex = require('../../database/conexao');
 const { excluirImagem, uploadImagem } = require('../../services/upload');
 
