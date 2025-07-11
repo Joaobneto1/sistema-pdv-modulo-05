@@ -35,8 +35,6 @@
 Clone o projeto, instale as dependências e configure o banco de dados com o script SQL disponível.
 
 ```bash
-git clone https://github.com/Joaobneto1/sistema-pdv-modulo-05.git
-cd sistema-pdv-modulo-05
 npm install
 ```
 
